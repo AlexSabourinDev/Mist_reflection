@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Mist_common/include/common/UtilityMacros.h"
+#include "../Mist_common/include/UtilityMacros.h"
 #include "TypeInfo.h"
 #include "Any.h"
 #include "GlobalFunction.h"

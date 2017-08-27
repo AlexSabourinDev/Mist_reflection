@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Mist_common/include/common/UtilityMacros.h"
-#include "../utility/HashID.h"
+#include "../Mist_common/include/UtilityMacros.h"
+#include "../Mist_hashing/include/HashID.h"
 #include "MemberInfo.h"
 #include "MethodInfo.h"
 #include "MetaData.h"
