@@ -1,0 +1,85 @@
+This will be where I design the reflection system.
+
+Expected Use:
+
+namespace
+{
+	PreMainMethod classRegistration([]()
+	{
+		TypeInfo* foo = Reflection::AddType<Foo>(Hash("Foo"), [](int i)->std::any{ return Foo(i); });
+		foo->AddConstructor([]()->std::any{ return Foo(); });
+
+		foo->GetMetaData()->Add(Hash("Thing"), 10);
+
+		MethodInfo* bar = foo->AddMethod(&Foo::Bar, Hash("Bar"));
+		bar->GetMetaData()->Add(Hash("Other"), Life());
+
+		MemberInfo* boo = foo->AddMember(memberFoo, Hash("member"));
+
+		Reflection::AddFunction(Hash("GlobalFunction"), &GlobalFoo);
+		Reflection::AddGlobal(Hash("Global"), &someGlobal);
+	});
+}
+
+void Usage()
+{
+	TypeInfo* foo = Reflection::GetType(Hash("Foo"));]
+		
+	Foo concFoo = foo->Create<Foo>(Hash("Foo"));
+
+	MethodInfo* bar = foo->GetMethodInfo(Hash("Bar"));
+	int j = bar->Invoke<int>(concFoo);
+
+	std::vector<TypeInfo> types = Reflection::GetTypes();
+	TypeInfo* withMeta = std::find_if(types.begin(), types.end(), [](TypeInfo* info)->bool{ return info->GetMetaData()->Has(Hash("Thing")); });
+	int value = withMeta->GetMetaData()->Get(Hash("Thing"));
+
+	Print(value);
+
+	return;
+}
+
+
+
+Impl:
+
+Type
+	Is<Types...>() : bool
+	CoreType : TypeImpl
+
+Delegate
+	Method : DelegateImpl
+	Invoke<ReturnType, Args...>(Args...) : ReturnType
+
+MetaData
+	data : std::unordered_map<uint32_t, std::any>
+	Get<Type>(uint32_t) : Type
+	Has(uint32_t) : bool
+	Add<Type>(uint32_t, Type) : void
+
+MethodInfo
+	Method : Delegate
+	MetaData : MetaData
+
+	GetMetaData() : MetaData
+	Invoke<Type, ReturnType, Args...>(Type, Args...) : ReturnType
+
+Constructor
+	Factory : Delegate
+
+TypeInfo
+	Type : Type
+	Constructors : std::vector<Delegate>
+	Methods : std::unordered_map<uint32_t, MethodInfo>
+	MetaData : MetaData
+
+	GetType() : Type
+	GetMetaData() : MetaData
+	GetMethodInfo() : MethodInfo
+	GetMemberInfo() : MemberInfo
+
+	AddConstructor() : void
+	AddMethodInfo(uint32_t, Method) : void
+	AddMember(uint32_t, Member) : void
+
+	Create(arbitrary) : Type
