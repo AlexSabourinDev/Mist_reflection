@@ -1,5 +1,5 @@
-#include "../../include/reflection/Reflection.h"
-#include "../../Mist_common/include/common/UtilityMacros.h"
+#include "../include/Reflection.h"
+#include "../Mist_common/include/common/UtilityMacros.h"
 
 MIST_NAMESPACE
 
