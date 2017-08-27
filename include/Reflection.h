@@ -5,7 +5,7 @@
 #include "Any.h"
 #include "GlobalFunction.h"
 #include "GlobalObject.h"
-#include "../utility/HashID.h"
+#include "../Mist_hashing/include/HashID.h"
 #include <unordered_map>
 
 MIST_NAMESPACE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Mist_common/include/common/UtilityMacros.h"
+#include "PreMain.h"
 #include <utility>
 
 MIST_NAMESPACE
