@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Mist_common/include/UtilityMacros.h"
+#include <Mist_Common/include/UtilityMacros.h>
 #include "../Mist_hashing/include/HashID.h"
 #include "MemberInfo.h"
 #include "MethodInfo.h"

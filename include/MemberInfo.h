@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Mist_common/include/UtilityMacros.h"
+#include <Mist_Common/include/UtilityMacros.h>
 #include "MetaData.h"
 #include "Delegate.h"
 
